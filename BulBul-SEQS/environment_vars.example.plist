@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>HMRC_CLIENT_ID</key>
+    <string>REPLACE-WITH-YOUR-CLIENT-ID</string>
+    <key>HMRC_AUTH_URL_TEST</key>
+    <string>https://test-www.tax.service.gov.uk/oauth/authorize</string>
+    <key>HMRC_AUTH_URL_PROD</key>
+    <string>https://www.tax.service.gov.uk/oauth/authorize</string>
+    <key>HMRC_REDIRECT_SCHEME</key>
+    <string>com.jsv.bulbulseqs</string>
+    <key>HMRC_REDIRECT_URI</key>
+    <string>com.jsv.bulbulseqs://hmrc-auth-callback</string>
+</dict>
+</plist>

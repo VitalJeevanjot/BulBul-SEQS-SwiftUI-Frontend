@@ -1,0 +1,8 @@
+// Copy this file to Config/Local.xcconfig for machine-specific values.
+// Do not put confidential secrets in an iOS/macOS app bundle.
+
+HMRC_CLIENT_ID = REPLACE-WITH-YOUR-CLIENT-ID
+HMRC_AUTH_URL_TEST = https:/$()/test-www.tax.service.gov.uk/oauth/authorize
+HMRC_AUTH_URL_PROD = https:/$()/www.tax.service.gov.uk/oauth/authorize
+HMRC_REDIRECT_SCHEME = com.jsv.bulbulseqs
+HMRC_REDIRECT_URI = com.jsv.bulbulseqs:/$()/hmrc-auth-callback

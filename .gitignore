@@ -1,0 +1,82 @@
+# macOS
+.DS_Store
+AppleDouble
+._*
+
+# Xcode
+build/
+DerivedData/
+*.xcresult
+*.xcworkspace/xcuserdata/
+*.xcodeproj/xcuserdata/
+*.xcodeproj/project.xcworkspace/xcuserdata/
+*.xcuserstate
+*.xcscmblueprint
+*.xccheckout
+*.xcuserdatad/
+
+# Swift Package Manager
+.build/
+.swiftpm/
+Packages/
+Package.pins
+
+# Keep Package.resolved tracked for app projects when present.
+!Package.resolved
+
+# CocoaPods
+Pods/
+
+# Carthage
+Carthage/Build/
+
+# Fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots/
+fastlane/test_output/
+
+# Archives
+*.xcarchive
+
+# User-specific/editor
+*.swp
+*.swo
+*.orig
+.idea/
+*.iml
+.vscode/
+
+# Secrets and local config
+BulBul-SEQS/environment_vars.plist
+BulBul-SEQS/Secrets.plist
+Config/Local.xcconfig
+Config/Secrets.xcconfig
+*.private.xcconfig
+.env
+.env.*
+!.env.example
+*.secrets
+*.secret
+
+# Amplify
+# The SwiftUI app configures Amplify from .amplifyOutputs, so keep this
+# generated outputs file tracked and review it before frontend API changes.
+amplify/.config/local-*
+amplify/mock-data/
+amplify/backend/amplify-meta.json
+!BulBul-SEQS/AmplifyWorks/amplify_outputs.json
+
+# Logs
+*.log
+
+# Databases
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+
+# Temporary files
+*.tmp
+*.temp
+
+TestUser-Generated organisation - HMRC Developer Hub - GOV.UK.pdf
