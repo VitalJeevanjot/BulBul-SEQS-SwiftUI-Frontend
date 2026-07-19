@@ -273,6 +273,66 @@
       },
       "enums": {},
       "nonModels": {},
+      "queries": {
+        "listBusinesses": {
+          "name": "listBusinesses",
+          "isArray": false,
+          "type": "String",
+          "isRequired": true,
+          "arguments": {
+            "nino": {
+              "name": "nino",
+              "isArray": false,
+              "type": "String",
+              "isRequired": true
+            },
+            "govTestScenario": {
+              "name": "govTestScenario",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false
+            },
+            "fraudPreventionHeaders": {
+              "name": "fraudPreventionHeaders",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false
+            }
+          }
+        },
+        "retrieveBusinessDetails": {
+          "name": "retrieveBusinessDetails",
+          "isArray": false,
+          "type": "String",
+          "isRequired": true,
+          "arguments": {
+            "nino": {
+              "name": "nino",
+              "isArray": false,
+              "type": "String",
+              "isRequired": true
+            },
+            "businessId": {
+              "name": "businessId",
+              "isArray": false,
+              "type": "String",
+              "isRequired": true
+            },
+            "govTestScenario": {
+              "name": "govTestScenario",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false
+            },
+            "fraudPreventionHeaders": {
+              "name": "fraudPreventionHeaders",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false
+            }
+          }
+        }
+      },
       "mutations": {
         "changeToAccessToken": {
           "name": "changeToAccessToken",
