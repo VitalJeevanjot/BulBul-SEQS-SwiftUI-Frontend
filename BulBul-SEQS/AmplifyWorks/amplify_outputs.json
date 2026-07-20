@@ -272,12 +272,497 @@
         }
       },
       "enums": {},
-      "nonModels": {},
+      "nonModels": {
+        "BusinessSummary": {
+          "name": "BusinessSummary",
+          "fields": {
+            "typeOfBusiness": {
+              "name": "typeOfBusiness",
+              "isArray": false,
+              "type": "String",
+              "isRequired": true,
+              "attributes": []
+            },
+            "businessId": {
+              "name": "businessId",
+              "isArray": false,
+              "type": "String",
+              "isRequired": true,
+              "attributes": []
+            },
+            "tradingName": {
+              "name": "tradingName",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
+            }
+          }
+        },
+        "ListBusinessesResponse": {
+          "name": "ListBusinessesResponse",
+          "fields": {
+            "listOfBusinesses": {
+              "name": "listOfBusinesses",
+              "isArray": true,
+              "type": {
+                "nonModel": "BusinessSummary"
+              },
+              "isRequired": false,
+              "attributes": [],
+              "isArrayNullable": false
+            }
+          }
+        },
+        "AccountingPeriod": {
+          "name": "AccountingPeriod",
+          "fields": {
+            "start": {
+              "name": "start",
+              "isArray": false,
+              "type": "AWSDate",
+              "isRequired": true,
+              "attributes": []
+            },
+            "end": {
+              "name": "end",
+              "isArray": false,
+              "type": "AWSDate",
+              "isRequired": true,
+              "attributes": []
+            }
+          }
+        },
+        "LatencyDetails": {
+          "name": "LatencyDetails",
+          "fields": {
+            "latencyEndDate": {
+              "name": "latencyEndDate",
+              "isArray": false,
+              "type": "AWSDate",
+              "isRequired": true,
+              "attributes": []
+            },
+            "taxYear1": {
+              "name": "taxYear1",
+              "isArray": false,
+              "type": "String",
+              "isRequired": true,
+              "attributes": []
+            },
+            "latencyIndicator1": {
+              "name": "latencyIndicator1",
+              "isArray": false,
+              "type": "String",
+              "isRequired": true,
+              "attributes": []
+            },
+            "taxYear2": {
+              "name": "taxYear2",
+              "isArray": false,
+              "type": "String",
+              "isRequired": true,
+              "attributes": []
+            },
+            "latencyIndicator2": {
+              "name": "latencyIndicator2",
+              "isArray": false,
+              "type": "String",
+              "isRequired": true,
+              "attributes": []
+            }
+          }
+        },
+        "QuarterlyTypeChoice": {
+          "name": "QuarterlyTypeChoice",
+          "fields": {
+            "quarterlyPeriodType": {
+              "name": "quarterlyPeriodType",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
+            },
+            "taxYearOfChoice": {
+              "name": "taxYearOfChoice",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
+            }
+          }
+        },
+        "BusinessDetails": {
+          "name": "BusinessDetails",
+          "fields": {
+            "businessId": {
+              "name": "businessId",
+              "isArray": false,
+              "type": "String",
+              "isRequired": true,
+              "attributes": []
+            },
+            "typeOfBusiness": {
+              "name": "typeOfBusiness",
+              "isArray": false,
+              "type": "String",
+              "isRequired": true,
+              "attributes": []
+            },
+            "tradingName": {
+              "name": "tradingName",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
+            },
+            "yearOfMigration": {
+              "name": "yearOfMigration",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
+            },
+            "firstAccountingPeriodStartDate": {
+              "name": "firstAccountingPeriodStartDate",
+              "isArray": false,
+              "type": "AWSDate",
+              "isRequired": false,
+              "attributes": []
+            },
+            "firstAccountingPeriodEndDate": {
+              "name": "firstAccountingPeriodEndDate",
+              "isArray": false,
+              "type": "AWSDate",
+              "isRequired": false,
+              "attributes": []
+            },
+            "latencyDetails": {
+              "name": "latencyDetails",
+              "isArray": false,
+              "type": {
+                "nonModel": "LatencyDetails"
+              },
+              "isRequired": false,
+              "attributes": []
+            },
+            "quarterlyTypeChoice": {
+              "name": "quarterlyTypeChoice",
+              "isArray": false,
+              "type": {
+                "nonModel": "QuarterlyTypeChoice"
+              },
+              "isRequired": false,
+              "attributes": []
+            },
+            "accountingPeriods": {
+              "name": "accountingPeriods",
+              "isArray": true,
+              "type": {
+                "nonModel": "AccountingPeriod"
+              },
+              "isRequired": false,
+              "attributes": [],
+              "isArrayNullable": true
+            },
+            "commencementDate": {
+              "name": "commencementDate",
+              "isArray": false,
+              "type": "AWSDate",
+              "isRequired": false,
+              "attributes": []
+            },
+            "cessationDate": {
+              "name": "cessationDate",
+              "isArray": false,
+              "type": "AWSDate",
+              "isRequired": false,
+              "attributes": []
+            },
+            "businessAddressLineOne": {
+              "name": "businessAddressLineOne",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
+            },
+            "businessAddressLineTwo": {
+              "name": "businessAddressLineTwo",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
+            },
+            "businessAddressLineThree": {
+              "name": "businessAddressLineThree",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
+            },
+            "businessAddressLineFour": {
+              "name": "businessAddressLineFour",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
+            },
+            "businessAddressPostcode": {
+              "name": "businessAddressPostcode",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
+            },
+            "businessAddressCountryCode": {
+              "name": "businessAddressCountryCode",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
+            }
+          }
+        },
+        "HmrcApiError": {
+          "name": "HmrcApiError",
+          "fields": {
+            "statusCode": {
+              "name": "statusCode",
+              "isArray": false,
+              "type": "Int",
+              "isRequired": true,
+              "attributes": []
+            },
+            "code": {
+              "name": "code",
+              "isArray": false,
+              "type": "String",
+              "isRequired": true,
+              "attributes": []
+            },
+            "message": {
+              "name": "message",
+              "isArray": false,
+              "type": "String",
+              "isRequired": true,
+              "attributes": []
+            },
+            "correlationId": {
+              "name": "correlationId",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
+            }
+          }
+        },
+        "HmrcOAuthTokenMetadata": {
+          "name": "HmrcOAuthTokenMetadata",
+          "fields": {
+            "tokenType": {
+              "name": "tokenType",
+              "isArray": false,
+              "type": "String",
+              "isRequired": true,
+              "attributes": []
+            },
+            "expiresIn": {
+              "name": "expiresIn",
+              "isArray": false,
+              "type": "Int",
+              "isRequired": true,
+              "attributes": []
+            },
+            "expiresAt": {
+              "name": "expiresAt",
+              "isArray": false,
+              "type": "AWSDateTime",
+              "isRequired": true,
+              "attributes": []
+            },
+            "scope": {
+              "name": "scope",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
+            }
+          }
+        },
+        "HmrcOAuthError": {
+          "name": "HmrcOAuthError",
+          "fields": {
+            "statusCode": {
+              "name": "statusCode",
+              "isArray": false,
+              "type": "Int",
+              "isRequired": true,
+              "attributes": []
+            },
+            "error": {
+              "name": "error",
+              "isArray": false,
+              "type": "String",
+              "isRequired": true,
+              "attributes": []
+            },
+            "errorDescription": {
+              "name": "errorDescription",
+              "isArray": false,
+              "type": "String",
+              "isRequired": true,
+              "attributes": []
+            }
+          }
+        },
+        "HmrcOAuthTokenResult": {
+          "name": "HmrcOAuthTokenResult",
+          "fields": {
+            "success": {
+              "name": "success",
+              "isArray": false,
+              "type": "Boolean",
+              "isRequired": true,
+              "attributes": []
+            },
+            "token": {
+              "name": "token",
+              "isArray": false,
+              "type": {
+                "nonModel": "HmrcOAuthTokenMetadata"
+              },
+              "isRequired": false,
+              "attributes": []
+            },
+            "error": {
+              "name": "error",
+              "isArray": false,
+              "type": {
+                "nonModel": "HmrcOAuthError"
+              },
+              "isRequired": false,
+              "attributes": []
+            }
+          }
+        },
+        "ListBusinessesResult": {
+          "name": "ListBusinessesResult",
+          "fields": {
+            "success": {
+              "name": "success",
+              "isArray": false,
+              "type": "Boolean",
+              "isRequired": true,
+              "attributes": []
+            },
+            "data": {
+              "name": "data",
+              "isArray": false,
+              "type": {
+                "nonModel": "ListBusinessesResponse"
+              },
+              "isRequired": false,
+              "attributes": []
+            },
+            "error": {
+              "name": "error",
+              "isArray": false,
+              "type": {
+                "nonModel": "HmrcApiError"
+              },
+              "isRequired": false,
+              "attributes": []
+            }
+          }
+        },
+        "RetrieveBusinessDetailsResult": {
+          "name": "RetrieveBusinessDetailsResult",
+          "fields": {
+            "success": {
+              "name": "success",
+              "isArray": false,
+              "type": "Boolean",
+              "isRequired": true,
+              "attributes": []
+            },
+            "data": {
+              "name": "data",
+              "isArray": false,
+              "type": {
+                "nonModel": "BusinessDetails"
+              },
+              "isRequired": false,
+              "attributes": []
+            },
+            "error": {
+              "name": "error",
+              "isArray": false,
+              "type": {
+                "nonModel": "HmrcApiError"
+              },
+              "isRequired": false,
+              "attributes": []
+            }
+          }
+        },
+        "HmrcTokenStatus": {
+          "name": "HmrcTokenStatus",
+          "fields": {
+            "isSignedInWithHmrc": {
+              "name": "isSignedInWithHmrc",
+              "isArray": false,
+              "type": "Boolean",
+              "isRequired": true,
+              "attributes": []
+            }
+          }
+        },
+        "HmrcTokenStatusResult": {
+          "name": "HmrcTokenStatusResult",
+          "fields": {
+            "success": {
+              "name": "success",
+              "isArray": false,
+              "type": "Boolean",
+              "isRequired": true,
+              "attributes": []
+            },
+            "data": {
+              "name": "data",
+              "isArray": false,
+              "type": {
+                "nonModel": "HmrcTokenStatus"
+              },
+              "isRequired": false,
+              "attributes": []
+            },
+            "error": {
+              "name": "error",
+              "isArray": false,
+              "type": {
+                "nonModel": "HmrcApiError"
+              },
+              "isRequired": false,
+              "attributes": []
+            }
+          }
+        }
+      },
       "queries": {
+        "getHmrcTokenStatus": {
+          "name": "getHmrcTokenStatus",
+          "isArray": false,
+          "type": {
+            "nonModel": "HmrcTokenStatusResult"
+          },
+          "isRequired": true
+        },
         "listBusinesses": {
           "name": "listBusinesses",
           "isArray": false,
-          "type": "String",
+          "type": {
+            "nonModel": "ListBusinessesResult"
+          },
           "isRequired": true,
           "arguments": {
             "nino": {
@@ -303,7 +788,9 @@
         "retrieveBusinessDetails": {
           "name": "retrieveBusinessDetails",
           "isArray": false,
-          "type": "String",
+          "type": {
+            "nonModel": "RetrieveBusinessDetailsResult"
+          },
           "isRequired": true,
           "arguments": {
             "nino": {
@@ -337,7 +824,9 @@
         "changeToAccessToken": {
           "name": "changeToAccessToken",
           "isArray": false,
-          "type": "Boolean",
+          "type": {
+            "nonModel": "HmrcOAuthTokenResult"
+          },
           "isRequired": true,
           "arguments": {
             "input": {
@@ -357,7 +846,9 @@
         "refreshAccessToken": {
           "name": "refreshAccessToken",
           "isArray": false,
-          "type": "Boolean",
+          "type": {
+            "nonModel": "HmrcOAuthTokenResult"
+          },
           "isRequired": true
         }
       }

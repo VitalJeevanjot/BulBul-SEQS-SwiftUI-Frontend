@@ -80,6 +80,10 @@ enum HMRCAuthCallback {
 extension MainView {
     @MainActor
     func AuthenticateWithHMRC() async {
+        guard !isAuthenticatingWithHMRC else { return }
+        isAuthenticatingWithHMRC = true
+        defer { isAuthenticatingWithHMRC = false }
+
         guard let configuration = AppConfig.hmrc else {
             presentHMRCAuthError(
                 HMRCAuthPromptError(
@@ -139,6 +143,7 @@ extension MainView {
                 expectedState: stateUUID
             )
             try await changeToAccessToken(with: code, stateID: stateUUID)
+            hmrcConnectionState = .connected
         } catch {
             let promptError = error as? HMRCAuthPromptError
                 ?? HMRCAuthPromptError(
@@ -165,26 +170,40 @@ extension MainView {
         with code: String,
         stateID: String
     ) async throws {
-        let request = GraphQLRequest<Bool>(
+        let request = GraphQLRequest<HMRCOAuthTokenResult>(
             document: """
             mutation ChangeToAccessToken($input: String!, $stateId: String!) {
-                changeToAccessToken(input: $input, stateId: $stateId)
+                changeToAccessToken(input: $input, stateId: $stateId) {
+                    success
+                    token {
+                        tokenType
+                        expiresIn
+                        expiresAt
+                        scope
+                    }
+                    error {
+                        statusCode
+                        error
+                        errorDescription
+                    }
+                }
             }
             """,
             variables: ["input": code, "stateId": stateID],
-            responseType: Bool.self,
+            responseType: HMRCOAuthTokenResult.self,
             decodePath: "changeToAccessToken"
         )
 
         let result = try await Amplify.API.mutate(request: request)
 
         switch result {
-        case .success(true):
+        case .success(let response) where response.success:
             return
-        case .success(false):
+        case .success(let response):
             throw HMRCAuthPromptError(
                 code: "BulBul-Seqs-1J",
-                description: "MTD authentication did not complete successfully."
+                description: response.error?.description
+                    ?? "MTD authentication did not complete successfully."
             )
         case .failure(let error):
             throw error

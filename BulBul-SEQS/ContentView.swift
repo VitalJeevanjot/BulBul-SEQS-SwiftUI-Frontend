@@ -18,17 +18,21 @@ struct ContentView: View {
             if startupSessionCheckComplete {
                 Authenticator {
                     state in
-                    MainView()
-                    Button("Sign out") {
-                        Task {
-                            await state.signOut()
+                    MainView(
+                        onSignOut: {
+                            Task {
+                                await state.signOut()
+                            }
                         }
-                    }
+                    )
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
                 }
             } else {
                 ProgressView()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .task {
             guard !startupSessionCheckComplete else {
                 return

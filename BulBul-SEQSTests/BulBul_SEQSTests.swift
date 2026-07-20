@@ -11,6 +11,27 @@ import Foundation
 
 struct BulBul_SEQSTests {
 
+    @Test func ninoValidationMatchesHMRCRestrictions() {
+        #expect(HMRCIdentifierValidator.isValidNINO("AB123456C"))
+        #expect(!HMRCIdentifierValidator.isValidNINO("BG123456A"))
+        #expect(!HMRCIdentifierValidator.isValidNINO("DA123456A"))
+        #expect(!HMRCIdentifierValidator.isValidNINO("AO123456A"))
+        #expect(!HMRCIdentifierValidator.isValidNINO("AB123456E"))
+        #expect(!HMRCIdentifierValidator.isValidNINO("AB12345C"))
+    }
+
+    @Test func ninoInputIsNormalizedBeforeValidation() {
+        #expect(HMRCIdentifierValidator.normalizedNINO("ab 12-34 56 c") == "AB123456C")
+    }
+
+    @Test func businessIDValidationMatchesRequiredFormat() {
+        #expect(HMRCIdentifierValidator.isValidBusinessID("XAIS12345678901"))
+        #expect(HMRCIdentifierValidator.isValidBusinessID("X7IS12345678901"))
+        #expect(!HMRCIdentifierValidator.isValidBusinessID("AAIS12345678901"))
+        #expect(!HMRCIdentifierValidator.isValidBusinessID("XAIS1234567890"))
+        #expect(!HMRCIdentifierValidator.isValidBusinessID("XAIS123456789012"))
+    }
+
     @Test func oauthErrorCallbackProducesPromptError() throws {
         let callbackURL = try #require(
             URL(
@@ -66,6 +87,47 @@ struct BulBul_SEQSTests {
         } catch let error as HMRCAuthPromptError {
             #expect(error.code == "BulBul-Seqs-1H")
         }
+    }
+
+    @Test func hmrcTokenStatusResponseDecodes() throws {
+        let json = Data(
+            """
+            {
+              "success": true,
+              "data": {
+                "isSignedInWithHmrc": true
+              },
+              "error": null
+            }
+            """.utf8
+        )
+
+        let response = try JSONDecoder().decode(HMRCTokenStatusResult.self, from: json)
+
+        #expect(response.success)
+        #expect(response.data?.isSignedInWithHmrc == true)
+    }
+
+    @Test func hmrcOAuthStructuredErrorDecodes() throws {
+        let json = Data(
+            """
+            {
+              "success": false,
+              "token": null,
+              "error": {
+                "statusCode": 401,
+                "error": "invalid_grant",
+                "errorDescription": "The HMRC session has expired."
+              }
+            }
+            """.utf8
+        )
+
+        let response = try JSONDecoder().decode(HMRCOAuthTokenResult.self, from: json)
+
+        #expect(!response.success)
+        #expect(response.error?.error == "invalid_grant")
+        #expect(response.error?.description == "The HMRC session has expired.")
     }
 
 }
