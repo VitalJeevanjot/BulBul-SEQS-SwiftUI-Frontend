@@ -15,6 +15,7 @@ struct MainView: View {
 
     @State private var viewModel = HMRCJourneyViewModel()
     @State var hmrcAuthError: HMRCAuthPromptError?
+    @State var isShowingHMRCSignInSuccess = false
     @State var hmrcConnectionState = HMRCConnectionState.checking
     @State var isAuthenticatingWithHMRC = false
     @Namespace private var businessZoomNamespace
@@ -89,6 +90,7 @@ struct MainView: View {
 #endif
         }
         .task {
+            print("loading profile...")
             await viewModel.load(modelContext: modelContext)
             await checkHMRCConnection()
         }
@@ -98,6 +100,11 @@ struct MainView: View {
                 message: Text("\(error.code)\n\(error.description)"),
                 dismissButton: .default(Text("OK"))
             )
+        }
+        .alert("Sign in successful", isPresented: $isShowingHMRCSignInSuccess) {
+            Button("OK", role: .cancel) {}
+        } message: {
+            Text("You’re now signed in with HMRC.")
         }
     }
 

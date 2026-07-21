@@ -7,6 +7,7 @@
 
 import Testing
 import Foundation
+import SwiftData
 @testable import BulBul_SEQS
 
 struct BulBul_SEQSTests {
@@ -128,6 +129,49 @@ struct BulBul_SEQSTests {
         #expect(!response.success)
         #expect(response.error?.error == "invalid_grant")
         #expect(response.error?.description == "The HMRC session has expired.")
+    }
+
+    @Test @MainActor func deletingLocalUserDataRemovesProfilesAndBusinesses() throws {
+        let schema = Schema([
+            HMRCUserProfile.self,
+            StoredBusiness.self,
+        ])
+        let configuration = ModelConfiguration(
+            "HMRCBusinessStore",
+            schema: schema,
+            isStoredInMemoryOnly: true,
+            cloudKitDatabase: .none
+        )
+        let container = try ModelContainer(
+            for: schema,
+            configurations: [configuration]
+        )
+        let modelContext = container.mainContext
+
+        modelContext.insert(
+            HMRCUserProfile(
+                userID: "test-user",
+                email: "user@example.com",
+                nino: "AB123456C"
+            )
+        )
+        modelContext.insert(
+            StoredBusiness(
+                userID: "test-user",
+                nino: "AB123456C",
+                summary: HMRCBusinessSummary(
+                    typeOfBusiness: "self-employment",
+                    businessId: "XAIS12345678901",
+                    tradingName: "Test Business"
+                )
+            )
+        )
+        try modelContext.save()
+
+        try LocalUserDataStore.deleteAll(from: modelContext)
+
+        #expect(try modelContext.fetchCount(FetchDescriptor<HMRCUserProfile>()) == 0)
+        #expect(try modelContext.fetchCount(FetchDescriptor<StoredBusiness>()) == 0)
     }
 
 }

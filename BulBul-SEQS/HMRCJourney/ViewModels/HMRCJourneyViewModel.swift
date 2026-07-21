@@ -162,7 +162,7 @@ final class HMRCJourneyViewModel {
             try loadStoredBusinesses(modelContext: modelContext)
             successMessage = validSummaries.isEmpty
                 ? "HMRC returned no businesses for this NINO."
-                : "Loaded \(validSummaries.count) business\(validSummaries.count == 1 ? "" : "es"). Saved details are reused from SwiftData."
+                : "Loaded \(validSummaries.count) business\(validSummaries.count == 1 ? "" : "es"). Saved details may need update."
             print("[HMRC] Stored businesses: \(businesses.map { "\($0.businessID): details=\($0.hasDetails)" })")
         } catch let apiError as HMRCAPIError {
             issues.append(

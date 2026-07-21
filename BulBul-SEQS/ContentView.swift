@@ -8,9 +8,11 @@
 import Amplify
 import Authenticator
 import AWSPluginsCore
+import SwiftData
 import SwiftUI
 
 struct ContentView: View {
+    @Environment(\.modelContext) private var modelContext
     @State private var startupSessionCheckComplete = false
 
     var body: some View {
@@ -20,8 +22,9 @@ struct ContentView: View {
                     state in
                     MainView(
                         onSignOut: {
-                            Task {
-                                await state.signOut()
+                            Task { @MainActor in
+                                _ = await state.signOut()
+                                deleteLocalUserData()
                             }
                         }
                     )
@@ -60,9 +63,19 @@ struct ContentView: View {
             if case .failure(let authError) = cognitoSession.getCognitoTokens(),
                authError.requiresReauthentication {
                 _ = await Amplify.Auth.signOut()
+                deleteLocalUserData()
             }
         } catch {
             print("Unable to validate startup auth session: \(error)")
+        }
+    }
+
+    @MainActor
+    private func deleteLocalUserData() {
+        do {
+            try LocalUserDataStore.deleteAll(from: modelContext)
+        } catch {
+            print("Unable to delete local user data after sign-out: \(error)")
         }
     }
 }

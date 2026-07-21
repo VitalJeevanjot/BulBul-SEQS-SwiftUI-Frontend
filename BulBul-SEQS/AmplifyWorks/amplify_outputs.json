@@ -705,6 +705,165 @@
             }
           }
         },
+        "ObligationDetail": {
+          "name": "ObligationDetail",
+          "fields": {
+            "periodStartDate": {
+              "name": "periodStartDate",
+              "isArray": false,
+              "type": "AWSDate",
+              "isRequired": true,
+              "attributes": []
+            },
+            "periodEndDate": {
+              "name": "periodEndDate",
+              "isArray": false,
+              "type": "AWSDate",
+              "isRequired": true,
+              "attributes": []
+            },
+            "dueDate": {
+              "name": "dueDate",
+              "isArray": false,
+              "type": "AWSDate",
+              "isRequired": true,
+              "attributes": []
+            },
+            "status": {
+              "name": "status",
+              "isArray": false,
+              "type": "String",
+              "isRequired": true,
+              "attributes": []
+            },
+            "receivedDate": {
+              "name": "receivedDate",
+              "isArray": false,
+              "type": "AWSDate",
+              "isRequired": false,
+              "attributes": []
+            }
+          }
+        },
+        "BusinessObligations": {
+          "name": "BusinessObligations",
+          "fields": {
+            "typeOfBusiness": {
+              "name": "typeOfBusiness",
+              "isArray": false,
+              "type": "String",
+              "isRequired": true,
+              "attributes": []
+            },
+            "businessId": {
+              "name": "businessId",
+              "isArray": false,
+              "type": "String",
+              "isRequired": true,
+              "attributes": []
+            },
+            "obligationDetails": {
+              "name": "obligationDetails",
+              "isArray": true,
+              "type": {
+                "nonModel": "ObligationDetail"
+              },
+              "isRequired": false,
+              "attributes": [],
+              "isArrayNullable": false
+            }
+          }
+        },
+        "IncomeAndExpenditureObligationsResponse": {
+          "name": "IncomeAndExpenditureObligationsResponse",
+          "fields": {
+            "obligations": {
+              "name": "obligations",
+              "isArray": true,
+              "type": {
+                "nonModel": "BusinessObligations"
+              },
+              "isRequired": false,
+              "attributes": [],
+              "isArrayNullable": false
+            }
+          }
+        },
+        "FinalDeclarationObligationsResponse": {
+          "name": "FinalDeclarationObligationsResponse",
+          "fields": {
+            "obligations": {
+              "name": "obligations",
+              "isArray": true,
+              "type": {
+                "nonModel": "ObligationDetail"
+              },
+              "isRequired": false,
+              "attributes": [],
+              "isArrayNullable": false
+            }
+          }
+        },
+        "IncomeAndExpenditureObligationsResult": {
+          "name": "IncomeAndExpenditureObligationsResult",
+          "fields": {
+            "success": {
+              "name": "success",
+              "isArray": false,
+              "type": "Boolean",
+              "isRequired": true,
+              "attributes": []
+            },
+            "data": {
+              "name": "data",
+              "isArray": false,
+              "type": {
+                "nonModel": "IncomeAndExpenditureObligationsResponse"
+              },
+              "isRequired": false,
+              "attributes": []
+            },
+            "error": {
+              "name": "error",
+              "isArray": false,
+              "type": {
+                "nonModel": "HmrcApiError"
+              },
+              "isRequired": false,
+              "attributes": []
+            }
+          }
+        },
+        "FinalDeclarationObligationsResult": {
+          "name": "FinalDeclarationObligationsResult",
+          "fields": {
+            "success": {
+              "name": "success",
+              "isArray": false,
+              "type": "Boolean",
+              "isRequired": true,
+              "attributes": []
+            },
+            "data": {
+              "name": "data",
+              "isArray": false,
+              "type": {
+                "nonModel": "FinalDeclarationObligationsResponse"
+              },
+              "isRequired": false,
+              "attributes": []
+            },
+            "error": {
+              "name": "error",
+              "isArray": false,
+              "type": {
+                "nonModel": "HmrcApiError"
+              },
+              "isRequired": false,
+              "attributes": []
+            }
+          }
+        },
         "HmrcTokenStatus": {
           "name": "HmrcTokenStatus",
           "fields": {
@@ -804,6 +963,104 @@
               "isArray": false,
               "type": "String",
               "isRequired": true
+            },
+            "govTestScenario": {
+              "name": "govTestScenario",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false
+            },
+            "fraudPreventionHeaders": {
+              "name": "fraudPreventionHeaders",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false
+            }
+          }
+        },
+        "retrieveIncomeAndExpenditureObligations": {
+          "name": "retrieveIncomeAndExpenditureObligations",
+          "isArray": false,
+          "type": {
+            "nonModel": "IncomeAndExpenditureObligationsResult"
+          },
+          "isRequired": true,
+          "arguments": {
+            "nino": {
+              "name": "nino",
+              "isArray": false,
+              "type": "String",
+              "isRequired": true
+            },
+            "typeOfBusiness": {
+              "name": "typeOfBusiness",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false
+            },
+            "businessId": {
+              "name": "businessId",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false
+            },
+            "fromDate": {
+              "name": "fromDate",
+              "isArray": false,
+              "type": "AWSDate",
+              "isRequired": false
+            },
+            "toDate": {
+              "name": "toDate",
+              "isArray": false,
+              "type": "AWSDate",
+              "isRequired": false
+            },
+            "status": {
+              "name": "status",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false
+            },
+            "govTestScenario": {
+              "name": "govTestScenario",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false
+            },
+            "fraudPreventionHeaders": {
+              "name": "fraudPreventionHeaders",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false
+            }
+          }
+        },
+        "retrieveFinalDeclarationObligations": {
+          "name": "retrieveFinalDeclarationObligations",
+          "isArray": false,
+          "type": {
+            "nonModel": "FinalDeclarationObligationsResult"
+          },
+          "isRequired": true,
+          "arguments": {
+            "nino": {
+              "name": "nino",
+              "isArray": false,
+              "type": "String",
+              "isRequired": true
+            },
+            "taxYear": {
+              "name": "taxYear",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false
+            },
+            "status": {
+              "name": "status",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false
             },
             "govTestScenario": {
               "name": "govTestScenario",

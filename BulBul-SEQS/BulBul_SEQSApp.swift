@@ -42,33 +42,19 @@ struct BulBul_SEQSApp: App {
             HMRCUserProfile.self,
             StoredBusiness.self,
         ])
-        let cloudConfiguration = ModelConfiguration(
+        let configuration = ModelConfiguration(
             "HMRCBusinessStore",
             schema: schema,
-            cloudKitDatabase: .automatic
+            cloudKitDatabase: .none
         )
 
         do {
             return try ModelContainer(
                 for: schema,
-                configurations: [cloudConfiguration]
+                configurations: [configuration]
             )
         } catch {
-            print("Unable to create the iCloud SwiftData store: \(error)")
-
-            let localConfiguration = ModelConfiguration(
-                "HMRCBusinessStore-Local",
-                schema: schema,
-                cloudKitDatabase: .none
-            )
-            do {
-                return try ModelContainer(
-                    for: schema,
-                    configurations: [localConfiguration]
-                )
-            } catch {
-                fatalError("Unable to create the SwiftData store: \(error)")
-            }
+            fatalError("Unable to create the SwiftData store: \(error)")
         }
     }
 }

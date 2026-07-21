@@ -144,6 +144,7 @@ extension MainView {
             )
             try await changeToAccessToken(with: code, stateID: stateUUID)
             hmrcConnectionState = .connected
+            isShowingHMRCSignInSuccess = true
         } catch {
             let promptError = error as? HMRCAuthPromptError
                 ?? HMRCAuthPromptError(

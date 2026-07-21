@@ -26,12 +26,13 @@ struct BusinessRowCard: View {
 
             Spacer()
 
-            VStack(spacing: 8) {
-                Image(systemName: business.hasDetails ? "checkmark.icloud.fill" : "exclamationmark.icloud.fill")
+            HStack(spacing: 8) {
+                Image(systemName: business.hasDetails ? "checkmark.seal.text.page.fill" : "exclamationmark.triangle.text.page.fill")
                     .foregroundStyle(business.hasDetails ? .green : .orange)
-                    .accessibilityLabel(business.hasDetails ? "Saved in iCloud" : "Details unavailable")
+                    .accessibilityLabel(business.hasDetails ? "Details saved locally" : "Details unavailable")
+                    .font(.system(size: 20))
                 Image(systemName: "chevron.right")
-                    .font(.caption.weight(.bold))
+                    .font(.title3.weight(.bold))
                     .foregroundStyle(.tertiary)
             }
         }
