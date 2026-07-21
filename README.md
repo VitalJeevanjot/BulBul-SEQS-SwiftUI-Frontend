@@ -215,7 +215,7 @@ The current suite covers OAuth callbacks, identifier validation, response decodi
 
 Review the security model, HMRC production requirements, accessibility, tax calculations, and operational controls before treating this project as production tax software.
 
-## How I used Codex to build this project
+## How I used Codex to build this project (Codex Drafted Summary and I approve)
 
 I developed BulBul SEQS in an iterative, human-directed collaboration with Codex. I supplied the product goals, repository context, HMRC and AWS constraints, and approval for consequential actions. Codex helped turn those requirements into code, tests, documentation, and a reviewable Git history.
 
