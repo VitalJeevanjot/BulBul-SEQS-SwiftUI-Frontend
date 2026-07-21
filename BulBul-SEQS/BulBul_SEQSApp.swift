@@ -41,6 +41,8 @@ struct BulBul_SEQSApp: App {
         let schema = Schema([
             HMRCUserProfile.self,
             StoredBusiness.self,
+            DigitalRecord.self,
+            StoredObligation.self,
         ])
         let configuration = ModelConfiguration(
             "HMRCBusinessStore",

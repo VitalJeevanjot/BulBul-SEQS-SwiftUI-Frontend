@@ -4,7 +4,9 @@
     "aws_region": "us-east-1",
     "user_pool_client_id": "lavte2bcnkci24ct79e52uqgl",
     "identity_pool_id": "us-east-1:6159064f-d226-46bc-aa37-a5abcf4a68e9",
-    "mfa_methods": [],
+    "mfa_methods": [
+      "TOTP"
+    ],
     "standard_required_attributes": [
       "email"
     ],
@@ -15,7 +17,7 @@
       "email"
     ],
     "groups": [],
-    "mfa_configuration": "NONE",
+    "mfa_configuration": "REQUIRED",
     "password_policy": {
       "min_length": 8,
       "require_lowercase": true,
@@ -273,6 +275,221 @@
       },
       "enums": {},
       "nonModels": {
+        "CreateTestBusinessLatencyDetails": {
+          "name": "CreateTestBusinessLatencyDetails",
+          "fields": {
+            "latencyEndDate": {
+              "name": "latencyEndDate",
+              "isArray": false,
+              "type": "AWSDate",
+              "isRequired": true,
+              "attributes": []
+            },
+            "taxYear1": {
+              "name": "taxYear1",
+              "isArray": false,
+              "type": "String",
+              "isRequired": true,
+              "attributes": []
+            },
+            "latencyIndicator1": {
+              "name": "latencyIndicator1",
+              "isArray": false,
+              "type": "String",
+              "isRequired": true,
+              "attributes": []
+            },
+            "taxYear2": {
+              "name": "taxYear2",
+              "isArray": false,
+              "type": "String",
+              "isRequired": true,
+              "attributes": []
+            },
+            "latencyIndicator2": {
+              "name": "latencyIndicator2",
+              "isArray": false,
+              "type": "String",
+              "isRequired": true,
+              "attributes": []
+            }
+          }
+        },
+        "CreateTestBusinessQuarterlyTypeChoice": {
+          "name": "CreateTestBusinessQuarterlyTypeChoice",
+          "fields": {
+            "quarterlyPeriodType": {
+              "name": "quarterlyPeriodType",
+              "isArray": false,
+              "type": "String",
+              "isRequired": true,
+              "attributes": []
+            },
+            "taxYearOfChoice": {
+              "name": "taxYearOfChoice",
+              "isArray": false,
+              "type": "String",
+              "isRequired": true,
+              "attributes": []
+            }
+          }
+        },
+        "CreateTestBusinessPayload": {
+          "name": "CreateTestBusinessPayload",
+          "fields": {
+            "typeOfBusiness": {
+              "name": "typeOfBusiness",
+              "isArray": false,
+              "type": "String",
+              "isRequired": true,
+              "attributes": []
+            },
+            "tradingName": {
+              "name": "tradingName",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
+            },
+            "firstAccountingPeriodStartDate": {
+              "name": "firstAccountingPeriodStartDate",
+              "isArray": false,
+              "type": "AWSDate",
+              "isRequired": false,
+              "attributes": []
+            },
+            "firstAccountingPeriodEndDate": {
+              "name": "firstAccountingPeriodEndDate",
+              "isArray": false,
+              "type": "AWSDate",
+              "isRequired": false,
+              "attributes": []
+            },
+            "latencyDetails": {
+              "name": "latencyDetails",
+              "isArray": false,
+              "type": {
+                "nonModel": "CreateTestBusinessLatencyDetails"
+              },
+              "isRequired": false,
+              "attributes": []
+            },
+            "quarterlyTypeChoice": {
+              "name": "quarterlyTypeChoice",
+              "isArray": false,
+              "type": {
+                "nonModel": "CreateTestBusinessQuarterlyTypeChoice"
+              },
+              "isRequired": false,
+              "attributes": []
+            },
+            "accountingType": {
+              "name": "accountingType",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
+            },
+            "commencementDate": {
+              "name": "commencementDate",
+              "isArray": false,
+              "type": "AWSDate",
+              "isRequired": false,
+              "attributes": []
+            },
+            "cessationDate": {
+              "name": "cessationDate",
+              "isArray": false,
+              "type": "AWSDate",
+              "isRequired": false,
+              "attributes": []
+            },
+            "businessAddressLineOne": {
+              "name": "businessAddressLineOne",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
+            },
+            "businessAddressLineTwo": {
+              "name": "businessAddressLineTwo",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
+            },
+            "businessAddressLineThree": {
+              "name": "businessAddressLineThree",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
+            },
+            "businessAddressLineFour": {
+              "name": "businessAddressLineFour",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
+            },
+            "businessAddressPostcode": {
+              "name": "businessAddressPostcode",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
+            },
+            "businessAddressCountryCode": {
+              "name": "businessAddressCountryCode",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
+            }
+          }
+        },
+        "CreateTestBusinessResponse": {
+          "name": "CreateTestBusinessResponse",
+          "fields": {
+            "businessId": {
+              "name": "businessId",
+              "isArray": false,
+              "type": "String",
+              "isRequired": true,
+              "attributes": []
+            }
+          }
+        },
+        "CreateTestBusinessResult": {
+          "name": "CreateTestBusinessResult",
+          "fields": {
+            "success": {
+              "name": "success",
+              "isArray": false,
+              "type": "Boolean",
+              "isRequired": true,
+              "attributes": []
+            },
+            "data": {
+              "name": "data",
+              "isArray": false,
+              "type": {
+                "nonModel": "CreateTestBusinessResponse"
+              },
+              "isRequired": false,
+              "attributes": []
+            },
+            "error": {
+              "name": "error",
+              "isArray": false,
+              "type": {
+                "nonModel": "HmrcApiError"
+              },
+              "isRequired": false,
+              "attributes": []
+            }
+          }
+        },
         "BusinessSummary": {
           "name": "BusinessSummary",
           "fields": {
@@ -864,6 +1081,557 @@
             }
           }
         },
+        "CumulativePeriodDates": {
+          "name": "CumulativePeriodDates",
+          "fields": {
+            "periodStartDate": {
+              "name": "periodStartDate",
+              "isArray": false,
+              "type": "AWSDate",
+              "isRequired": true,
+              "attributes": []
+            },
+            "periodEndDate": {
+              "name": "periodEndDate",
+              "isArray": false,
+              "type": "AWSDate",
+              "isRequired": true,
+              "attributes": []
+            }
+          }
+        },
+        "CumulativePeriodIncomePayload": {
+          "name": "CumulativePeriodIncomePayload",
+          "fields": {
+            "turnover": {
+              "name": "turnover",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": true,
+              "attributes": []
+            },
+            "other": {
+              "name": "other",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": true,
+              "attributes": []
+            },
+            "taxTakenOffTradingIncome": {
+              "name": "taxTakenOffTradingIncome",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": false,
+              "attributes": []
+            }
+          }
+        },
+        "CumulativePeriodIncome": {
+          "name": "CumulativePeriodIncome",
+          "fields": {
+            "turnover": {
+              "name": "turnover",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": false,
+              "attributes": []
+            },
+            "other": {
+              "name": "other",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": false,
+              "attributes": []
+            },
+            "taxTakenOffTradingIncome": {
+              "name": "taxTakenOffTradingIncome",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": false,
+              "attributes": []
+            }
+          }
+        },
+        "ConsolidatedCumulativePeriodExpenses": {
+          "name": "ConsolidatedCumulativePeriodExpenses",
+          "fields": {
+            "consolidatedExpenses": {
+              "name": "consolidatedExpenses",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": true,
+              "attributes": []
+            }
+          }
+        },
+        "NonConsolidatedCumulativePeriodExpenses": {
+          "name": "NonConsolidatedCumulativePeriodExpenses",
+          "fields": {
+            "costOfGoods": {
+              "name": "costOfGoods",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": false,
+              "attributes": []
+            },
+            "paymentsToSubcontractors": {
+              "name": "paymentsToSubcontractors",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": false,
+              "attributes": []
+            },
+            "wagesAndStaffCosts": {
+              "name": "wagesAndStaffCosts",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": false,
+              "attributes": []
+            },
+            "carVanTravelExpenses": {
+              "name": "carVanTravelExpenses",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": false,
+              "attributes": []
+            },
+            "premisesRunningCosts": {
+              "name": "premisesRunningCosts",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": false,
+              "attributes": []
+            },
+            "maintenanceCosts": {
+              "name": "maintenanceCosts",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": false,
+              "attributes": []
+            },
+            "adminCosts": {
+              "name": "adminCosts",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": false,
+              "attributes": []
+            },
+            "businessEntertainmentCosts": {
+              "name": "businessEntertainmentCosts",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": false,
+              "attributes": []
+            },
+            "advertisingCosts": {
+              "name": "advertisingCosts",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": false,
+              "attributes": []
+            },
+            "interestOnBankOtherLoans": {
+              "name": "interestOnBankOtherLoans",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": false,
+              "attributes": []
+            },
+            "financeCharges": {
+              "name": "financeCharges",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": false,
+              "attributes": []
+            },
+            "irrecoverableDebts": {
+              "name": "irrecoverableDebts",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": false,
+              "attributes": []
+            },
+            "professionalFees": {
+              "name": "professionalFees",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": false,
+              "attributes": []
+            },
+            "depreciation": {
+              "name": "depreciation",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": false,
+              "attributes": []
+            },
+            "otherExpenses": {
+              "name": "otherExpenses",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": false,
+              "attributes": []
+            }
+          }
+        },
+        "CumulativePeriodDisallowableExpenses": {
+          "name": "CumulativePeriodDisallowableExpenses",
+          "fields": {
+            "costOfGoodsDisallowable": {
+              "name": "costOfGoodsDisallowable",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": false,
+              "attributes": []
+            },
+            "paymentsToSubcontractorsDisallowable": {
+              "name": "paymentsToSubcontractorsDisallowable",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": false,
+              "attributes": []
+            },
+            "wagesAndStaffCostsDisallowable": {
+              "name": "wagesAndStaffCostsDisallowable",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": false,
+              "attributes": []
+            },
+            "carVanTravelExpensesDisallowable": {
+              "name": "carVanTravelExpensesDisallowable",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": false,
+              "attributes": []
+            },
+            "premisesRunningCostsDisallowable": {
+              "name": "premisesRunningCostsDisallowable",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": false,
+              "attributes": []
+            },
+            "maintenanceCostsDisallowable": {
+              "name": "maintenanceCostsDisallowable",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": false,
+              "attributes": []
+            },
+            "adminCostsDisallowable": {
+              "name": "adminCostsDisallowable",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": false,
+              "attributes": []
+            },
+            "businessEntertainmentCostsDisallowable": {
+              "name": "businessEntertainmentCostsDisallowable",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": false,
+              "attributes": []
+            },
+            "advertisingCostsDisallowable": {
+              "name": "advertisingCostsDisallowable",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": false,
+              "attributes": []
+            },
+            "interestOnBankOtherLoansDisallowable": {
+              "name": "interestOnBankOtherLoansDisallowable",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": false,
+              "attributes": []
+            },
+            "financeChargesDisallowable": {
+              "name": "financeChargesDisallowable",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": false,
+              "attributes": []
+            },
+            "irrecoverableDebtsDisallowable": {
+              "name": "irrecoverableDebtsDisallowable",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": false,
+              "attributes": []
+            },
+            "professionalFeesDisallowable": {
+              "name": "professionalFeesDisallowable",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": false,
+              "attributes": []
+            },
+            "depreciationDisallowable": {
+              "name": "depreciationDisallowable",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": false,
+              "attributes": []
+            },
+            "otherExpensesDisallowable": {
+              "name": "otherExpensesDisallowable",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": false,
+              "attributes": []
+            }
+          }
+        },
+        "ConsolidatedCumulativePeriodSummaryPayload": {
+          "name": "ConsolidatedCumulativePeriodSummaryPayload",
+          "fields": {
+            "periodDates": {
+              "name": "periodDates",
+              "isArray": false,
+              "type": {
+                "nonModel": "CumulativePeriodDates"
+              },
+              "isRequired": false,
+              "attributes": []
+            },
+            "periodIncome": {
+              "name": "periodIncome",
+              "isArray": false,
+              "type": {
+                "nonModel": "CumulativePeriodIncomePayload"
+              },
+              "isRequired": true,
+              "attributes": []
+            },
+            "periodExpenses": {
+              "name": "periodExpenses",
+              "isArray": false,
+              "type": {
+                "nonModel": "ConsolidatedCumulativePeriodExpenses"
+              },
+              "isRequired": true,
+              "attributes": []
+            }
+          }
+        },
+        "NonConsolidatedCumulativePeriodSummaryPayload": {
+          "name": "NonConsolidatedCumulativePeriodSummaryPayload",
+          "fields": {
+            "periodDates": {
+              "name": "periodDates",
+              "isArray": false,
+              "type": {
+                "nonModel": "CumulativePeriodDates"
+              },
+              "isRequired": false,
+              "attributes": []
+            },
+            "periodIncome": {
+              "name": "periodIncome",
+              "isArray": false,
+              "type": {
+                "nonModel": "CumulativePeriodIncomePayload"
+              },
+              "isRequired": true,
+              "attributes": []
+            },
+            "periodExpenses": {
+              "name": "periodExpenses",
+              "isArray": false,
+              "type": {
+                "nonModel": "NonConsolidatedCumulativePeriodExpenses"
+              },
+              "isRequired": true,
+              "attributes": []
+            },
+            "periodDisallowableExpenses": {
+              "name": "periodDisallowableExpenses",
+              "isArray": false,
+              "type": {
+                "nonModel": "CumulativePeriodDisallowableExpenses"
+              },
+              "isRequired": false,
+              "attributes": []
+            }
+          }
+        },
+        "ConsolidatedCumulativePeriodSummary": {
+          "name": "ConsolidatedCumulativePeriodSummary",
+          "fields": {
+            "periodDates": {
+              "name": "periodDates",
+              "isArray": false,
+              "type": {
+                "nonModel": "CumulativePeriodDates"
+              },
+              "isRequired": true,
+              "attributes": []
+            },
+            "periodIncome": {
+              "name": "periodIncome",
+              "isArray": false,
+              "type": {
+                "nonModel": "CumulativePeriodIncome"
+              },
+              "isRequired": false,
+              "attributes": []
+            },
+            "periodExpenses": {
+              "name": "periodExpenses",
+              "isArray": false,
+              "type": {
+                "nonModel": "ConsolidatedCumulativePeriodExpenses"
+              },
+              "isRequired": false,
+              "attributes": []
+            }
+          }
+        },
+        "NonConsolidatedCumulativePeriodSummary": {
+          "name": "NonConsolidatedCumulativePeriodSummary",
+          "fields": {
+            "periodDates": {
+              "name": "periodDates",
+              "isArray": false,
+              "type": {
+                "nonModel": "CumulativePeriodDates"
+              },
+              "isRequired": true,
+              "attributes": []
+            },
+            "periodIncome": {
+              "name": "periodIncome",
+              "isArray": false,
+              "type": {
+                "nonModel": "CumulativePeriodIncome"
+              },
+              "isRequired": false,
+              "attributes": []
+            },
+            "periodExpenses": {
+              "name": "periodExpenses",
+              "isArray": false,
+              "type": {
+                "nonModel": "NonConsolidatedCumulativePeriodExpenses"
+              },
+              "isRequired": false,
+              "attributes": []
+            },
+            "periodDisallowableExpenses": {
+              "name": "periodDisallowableExpenses",
+              "isArray": false,
+              "type": {
+                "nonModel": "CumulativePeriodDisallowableExpenses"
+              },
+              "isRequired": false,
+              "attributes": []
+            }
+          }
+        },
+        "PutCumulativePeriodSummaryResponse": {
+          "name": "PutCumulativePeriodSummaryResponse",
+          "fields": {
+            "correlationId": {
+              "name": "correlationId",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
+            }
+          }
+        },
+        "PutCumulativePeriodSummaryResult": {
+          "name": "PutCumulativePeriodSummaryResult",
+          "fields": {
+            "success": {
+              "name": "success",
+              "isArray": false,
+              "type": "Boolean",
+              "isRequired": true,
+              "attributes": []
+            },
+            "data": {
+              "name": "data",
+              "isArray": false,
+              "type": {
+                "nonModel": "PutCumulativePeriodSummaryResponse"
+              },
+              "isRequired": false,
+              "attributes": []
+            },
+            "error": {
+              "name": "error",
+              "isArray": false,
+              "type": {
+                "nonModel": "HmrcApiError"
+              },
+              "isRequired": false,
+              "attributes": []
+            }
+          }
+        },
+        "GetConsolidatedCumulativePeriodSummaryResult": {
+          "name": "GetConsolidatedCumulativePeriodSummaryResult",
+          "fields": {
+            "success": {
+              "name": "success",
+              "isArray": false,
+              "type": "Boolean",
+              "isRequired": true,
+              "attributes": []
+            },
+            "data": {
+              "name": "data",
+              "isArray": false,
+              "type": {
+                "nonModel": "ConsolidatedCumulativePeriodSummary"
+              },
+              "isRequired": false,
+              "attributes": []
+            },
+            "error": {
+              "name": "error",
+              "isArray": false,
+              "type": {
+                "nonModel": "HmrcApiError"
+              },
+              "isRequired": false,
+              "attributes": []
+            }
+          }
+        },
+        "GetNonConsolidatedCumulativePeriodSummaryResult": {
+          "name": "GetNonConsolidatedCumulativePeriodSummaryResult",
+          "fields": {
+            "success": {
+              "name": "success",
+              "isArray": false,
+              "type": "Boolean",
+              "isRequired": true,
+              "attributes": []
+            },
+            "data": {
+              "name": "data",
+              "isArray": false,
+              "type": {
+                "nonModel": "NonConsolidatedCumulativePeriodSummary"
+              },
+              "isRequired": false,
+              "attributes": []
+            },
+            "error": {
+              "name": "error",
+              "isArray": false,
+              "type": {
+                "nonModel": "HmrcApiError"
+              },
+              "isRequired": false,
+              "attributes": []
+            }
+          }
+        },
         "HmrcTokenStatus": {
           "name": "HmrcTokenStatus",
           "fields": {
@@ -1075,6 +1843,86 @@
               "isRequired": false
             }
           }
+        },
+        "getSelfEmploymentCumulativeSummaryConsolidated": {
+          "name": "getSelfEmploymentCumulativeSummaryConsolidated",
+          "isArray": false,
+          "type": {
+            "nonModel": "GetConsolidatedCumulativePeriodSummaryResult"
+          },
+          "isRequired": true,
+          "arguments": {
+            "nino": {
+              "name": "nino",
+              "isArray": false,
+              "type": "String",
+              "isRequired": true
+            },
+            "businessId": {
+              "name": "businessId",
+              "isArray": false,
+              "type": "String",
+              "isRequired": true
+            },
+            "taxYear": {
+              "name": "taxYear",
+              "isArray": false,
+              "type": "String",
+              "isRequired": true
+            },
+            "govTestScenario": {
+              "name": "govTestScenario",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false
+            },
+            "fraudPreventionHeaders": {
+              "name": "fraudPreventionHeaders",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false
+            }
+          }
+        },
+        "getSelfEmploymentCumulativeSummaryNonConsolidated": {
+          "name": "getSelfEmploymentCumulativeSummaryNonConsolidated",
+          "isArray": false,
+          "type": {
+            "nonModel": "GetNonConsolidatedCumulativePeriodSummaryResult"
+          },
+          "isRequired": true,
+          "arguments": {
+            "nino": {
+              "name": "nino",
+              "isArray": false,
+              "type": "String",
+              "isRequired": true
+            },
+            "businessId": {
+              "name": "businessId",
+              "isArray": false,
+              "type": "String",
+              "isRequired": true
+            },
+            "taxYear": {
+              "name": "taxYear",
+              "isArray": false,
+              "type": "String",
+              "isRequired": true
+            },
+            "govTestScenario": {
+              "name": "govTestScenario",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false
+            },
+            "fraudPreventionHeaders": {
+              "name": "fraudPreventionHeaders",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false
+            }
+          }
         }
       },
       "mutations": {
@@ -1107,6 +1955,586 @@
             "nonModel": "HmrcOAuthTokenResult"
           },
           "isRequired": true
+        },
+        "createTestBusiness": {
+          "name": "createTestBusiness",
+          "isArray": false,
+          "type": {
+            "nonModel": "CreateTestBusinessResult"
+          },
+          "isRequired": true,
+          "arguments": {
+            "nino": {
+              "name": "nino",
+              "isArray": false,
+              "type": "String",
+              "isRequired": true
+            },
+            "business": {
+              "name": "business",
+              "isArray": false,
+              "type": {
+                "input": "CreateTestBusinessPayloadInput"
+              },
+              "isRequired": true
+            }
+          }
+        },
+        "putSelfEmploymentCumulativeSummaryConsolidated": {
+          "name": "putSelfEmploymentCumulativeSummaryConsolidated",
+          "isArray": false,
+          "type": {
+            "nonModel": "PutCumulativePeriodSummaryResult"
+          },
+          "isRequired": true,
+          "arguments": {
+            "nino": {
+              "name": "nino",
+              "isArray": false,
+              "type": "String",
+              "isRequired": true
+            },
+            "businessId": {
+              "name": "businessId",
+              "isArray": false,
+              "type": "String",
+              "isRequired": true
+            },
+            "taxYear": {
+              "name": "taxYear",
+              "isArray": false,
+              "type": "String",
+              "isRequired": true
+            },
+            "summary": {
+              "name": "summary",
+              "isArray": false,
+              "type": {
+                "input": "ConsolidatedCumulativePeriodSummaryPayloadInput"
+              },
+              "isRequired": true
+            },
+            "govTestScenario": {
+              "name": "govTestScenario",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false
+            },
+            "fraudPreventionHeaders": {
+              "name": "fraudPreventionHeaders",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false
+            }
+          }
+        },
+        "putSelfEmploymentCumulativeSummaryNonConsolidated": {
+          "name": "putSelfEmploymentCumulativeSummaryNonConsolidated",
+          "isArray": false,
+          "type": {
+            "nonModel": "PutCumulativePeriodSummaryResult"
+          },
+          "isRequired": true,
+          "arguments": {
+            "nino": {
+              "name": "nino",
+              "isArray": false,
+              "type": "String",
+              "isRequired": true
+            },
+            "businessId": {
+              "name": "businessId",
+              "isArray": false,
+              "type": "String",
+              "isRequired": true
+            },
+            "taxYear": {
+              "name": "taxYear",
+              "isArray": false,
+              "type": "String",
+              "isRequired": true
+            },
+            "summary": {
+              "name": "summary",
+              "isArray": false,
+              "type": {
+                "input": "NonConsolidatedCumulativePeriodSummaryPayloadInput"
+              },
+              "isRequired": true
+            },
+            "govTestScenario": {
+              "name": "govTestScenario",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false
+            },
+            "fraudPreventionHeaders": {
+              "name": "fraudPreventionHeaders",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false
+            }
+          }
+        }
+      },
+      "inputs": {
+        "CreateTestBusinessLatencyDetailsInput": {
+          "name": "CreateTestBusinessLatencyDetailsInput",
+          "attributes": {
+            "latencyEndDate": {
+              "name": "latencyEndDate",
+              "isArray": false,
+              "type": "AWSDate",
+              "isRequired": true
+            },
+            "taxYear1": {
+              "name": "taxYear1",
+              "isArray": false,
+              "type": "String",
+              "isRequired": true
+            },
+            "latencyIndicator1": {
+              "name": "latencyIndicator1",
+              "isArray": false,
+              "type": "String",
+              "isRequired": true
+            },
+            "taxYear2": {
+              "name": "taxYear2",
+              "isArray": false,
+              "type": "String",
+              "isRequired": true
+            },
+            "latencyIndicator2": {
+              "name": "latencyIndicator2",
+              "isArray": false,
+              "type": "String",
+              "isRequired": true
+            }
+          }
+        },
+        "CreateTestBusinessQuarterlyTypeChoiceInput": {
+          "name": "CreateTestBusinessQuarterlyTypeChoiceInput",
+          "attributes": {
+            "quarterlyPeriodType": {
+              "name": "quarterlyPeriodType",
+              "isArray": false,
+              "type": "String",
+              "isRequired": true
+            },
+            "taxYearOfChoice": {
+              "name": "taxYearOfChoice",
+              "isArray": false,
+              "type": "String",
+              "isRequired": true
+            }
+          }
+        },
+        "CreateTestBusinessPayloadInput": {
+          "name": "CreateTestBusinessPayloadInput",
+          "attributes": {
+            "typeOfBusiness": {
+              "name": "typeOfBusiness",
+              "isArray": false,
+              "type": "String",
+              "isRequired": true
+            },
+            "tradingName": {
+              "name": "tradingName",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false
+            },
+            "firstAccountingPeriodStartDate": {
+              "name": "firstAccountingPeriodStartDate",
+              "isArray": false,
+              "type": "AWSDate",
+              "isRequired": false
+            },
+            "firstAccountingPeriodEndDate": {
+              "name": "firstAccountingPeriodEndDate",
+              "isArray": false,
+              "type": "AWSDate",
+              "isRequired": false
+            },
+            "latencyDetails": {
+              "name": "latencyDetails",
+              "isArray": false,
+              "type": {
+                "input": "CreateTestBusinessLatencyDetailsInput"
+              },
+              "isRequired": false
+            },
+            "quarterlyTypeChoice": {
+              "name": "quarterlyTypeChoice",
+              "isArray": false,
+              "type": {
+                "input": "CreateTestBusinessQuarterlyTypeChoiceInput"
+              },
+              "isRequired": false
+            },
+            "accountingType": {
+              "name": "accountingType",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false
+            },
+            "commencementDate": {
+              "name": "commencementDate",
+              "isArray": false,
+              "type": "AWSDate",
+              "isRequired": false
+            },
+            "cessationDate": {
+              "name": "cessationDate",
+              "isArray": false,
+              "type": "AWSDate",
+              "isRequired": false
+            },
+            "businessAddressLineOne": {
+              "name": "businessAddressLineOne",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false
+            },
+            "businessAddressLineTwo": {
+              "name": "businessAddressLineTwo",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false
+            },
+            "businessAddressLineThree": {
+              "name": "businessAddressLineThree",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false
+            },
+            "businessAddressLineFour": {
+              "name": "businessAddressLineFour",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false
+            },
+            "businessAddressPostcode": {
+              "name": "businessAddressPostcode",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false
+            },
+            "businessAddressCountryCode": {
+              "name": "businessAddressCountryCode",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false
+            }
+          }
+        },
+        "CumulativePeriodDatesInput": {
+          "name": "CumulativePeriodDatesInput",
+          "attributes": {
+            "periodStartDate": {
+              "name": "periodStartDate",
+              "isArray": false,
+              "type": "AWSDate",
+              "isRequired": true
+            },
+            "periodEndDate": {
+              "name": "periodEndDate",
+              "isArray": false,
+              "type": "AWSDate",
+              "isRequired": true
+            }
+          }
+        },
+        "CumulativePeriodIncomePayloadInput": {
+          "name": "CumulativePeriodIncomePayloadInput",
+          "attributes": {
+            "turnover": {
+              "name": "turnover",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": true
+            },
+            "other": {
+              "name": "other",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": true
+            },
+            "taxTakenOffTradingIncome": {
+              "name": "taxTakenOffTradingIncome",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": false
+            }
+          }
+        },
+        "ConsolidatedCumulativePeriodExpensesInput": {
+          "name": "ConsolidatedCumulativePeriodExpensesInput",
+          "attributes": {
+            "consolidatedExpenses": {
+              "name": "consolidatedExpenses",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": true
+            }
+          }
+        },
+        "ConsolidatedCumulativePeriodSummaryPayloadInput": {
+          "name": "ConsolidatedCumulativePeriodSummaryPayloadInput",
+          "attributes": {
+            "periodDates": {
+              "name": "periodDates",
+              "isArray": false,
+              "type": {
+                "input": "CumulativePeriodDatesInput"
+              },
+              "isRequired": false
+            },
+            "periodIncome": {
+              "name": "periodIncome",
+              "isArray": false,
+              "type": {
+                "input": "CumulativePeriodIncomePayloadInput"
+              },
+              "isRequired": true
+            },
+            "periodExpenses": {
+              "name": "periodExpenses",
+              "isArray": false,
+              "type": {
+                "input": "ConsolidatedCumulativePeriodExpensesInput"
+              },
+              "isRequired": true
+            }
+          }
+        },
+        "NonConsolidatedCumulativePeriodExpensesInput": {
+          "name": "NonConsolidatedCumulativePeriodExpensesInput",
+          "attributes": {
+            "costOfGoods": {
+              "name": "costOfGoods",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": false
+            },
+            "paymentsToSubcontractors": {
+              "name": "paymentsToSubcontractors",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": false
+            },
+            "wagesAndStaffCosts": {
+              "name": "wagesAndStaffCosts",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": false
+            },
+            "carVanTravelExpenses": {
+              "name": "carVanTravelExpenses",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": false
+            },
+            "premisesRunningCosts": {
+              "name": "premisesRunningCosts",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": false
+            },
+            "maintenanceCosts": {
+              "name": "maintenanceCosts",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": false
+            },
+            "adminCosts": {
+              "name": "adminCosts",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": false
+            },
+            "businessEntertainmentCosts": {
+              "name": "businessEntertainmentCosts",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": false
+            },
+            "advertisingCosts": {
+              "name": "advertisingCosts",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": false
+            },
+            "interestOnBankOtherLoans": {
+              "name": "interestOnBankOtherLoans",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": false
+            },
+            "financeCharges": {
+              "name": "financeCharges",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": false
+            },
+            "irrecoverableDebts": {
+              "name": "irrecoverableDebts",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": false
+            },
+            "professionalFees": {
+              "name": "professionalFees",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": false
+            },
+            "depreciation": {
+              "name": "depreciation",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": false
+            },
+            "otherExpenses": {
+              "name": "otherExpenses",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": false
+            }
+          }
+        },
+        "CumulativePeriodDisallowableExpensesInput": {
+          "name": "CumulativePeriodDisallowableExpensesInput",
+          "attributes": {
+            "costOfGoodsDisallowable": {
+              "name": "costOfGoodsDisallowable",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": false
+            },
+            "paymentsToSubcontractorsDisallowable": {
+              "name": "paymentsToSubcontractorsDisallowable",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": false
+            },
+            "wagesAndStaffCostsDisallowable": {
+              "name": "wagesAndStaffCostsDisallowable",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": false
+            },
+            "carVanTravelExpensesDisallowable": {
+              "name": "carVanTravelExpensesDisallowable",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": false
+            },
+            "premisesRunningCostsDisallowable": {
+              "name": "premisesRunningCostsDisallowable",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": false
+            },
+            "maintenanceCostsDisallowable": {
+              "name": "maintenanceCostsDisallowable",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": false
+            },
+            "adminCostsDisallowable": {
+              "name": "adminCostsDisallowable",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": false
+            },
+            "businessEntertainmentCostsDisallowable": {
+              "name": "businessEntertainmentCostsDisallowable",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": false
+            },
+            "advertisingCostsDisallowable": {
+              "name": "advertisingCostsDisallowable",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": false
+            },
+            "interestOnBankOtherLoansDisallowable": {
+              "name": "interestOnBankOtherLoansDisallowable",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": false
+            },
+            "financeChargesDisallowable": {
+              "name": "financeChargesDisallowable",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": false
+            },
+            "irrecoverableDebtsDisallowable": {
+              "name": "irrecoverableDebtsDisallowable",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": false
+            },
+            "professionalFeesDisallowable": {
+              "name": "professionalFeesDisallowable",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": false
+            },
+            "depreciationDisallowable": {
+              "name": "depreciationDisallowable",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": false
+            },
+            "otherExpensesDisallowable": {
+              "name": "otherExpensesDisallowable",
+              "isArray": false,
+              "type": "Float",
+              "isRequired": false
+            }
+          }
+        },
+        "NonConsolidatedCumulativePeriodSummaryPayloadInput": {
+          "name": "NonConsolidatedCumulativePeriodSummaryPayloadInput",
+          "attributes": {
+            "periodDates": {
+              "name": "periodDates",
+              "isArray": false,
+              "type": {
+                "input": "CumulativePeriodDatesInput"
+              },
+              "isRequired": false
+            },
+            "periodIncome": {
+              "name": "periodIncome",
+              "isArray": false,
+              "type": {
+                "input": "CumulativePeriodIncomePayloadInput"
+              },
+              "isRequired": true
+            },
+            "periodExpenses": {
+              "name": "periodExpenses",
+              "isArray": false,
+              "type": {
+                "input": "NonConsolidatedCumulativePeriodExpensesInput"
+              },
+              "isRequired": true
+            },
+            "periodDisallowableExpenses": {
+              "name": "periodDisallowableExpenses",
+              "isArray": false,
+              "type": {
+                "input": "CumulativePeriodDisallowableExpensesInput"
+              },
+              "isRequired": false
+            }
+          }
         }
       }
     }

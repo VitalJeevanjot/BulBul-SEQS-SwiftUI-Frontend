@@ -2,6 +2,7 @@ import SwiftUI
 
 struct UserHeaderView: View {
     let displayName: String
+    let showMFASettings: () -> Void
     let signOut: () -> Void
 
     var body: some View {
@@ -15,6 +16,10 @@ struct UserHeaderView: View {
                 .lineLimit(1)
 
             Spacer()
+
+            Button("2FA", systemImage: "lock.shield", action: showMFASettings)
+                .buttonStyle(.bordered)
+                .accessibilityIdentifier("mfa-settings-button")
 
             Button("Logout", systemImage: "rectangle.portrait.and.arrow.right", action: signOut)
                 .buttonStyle(.bordered)

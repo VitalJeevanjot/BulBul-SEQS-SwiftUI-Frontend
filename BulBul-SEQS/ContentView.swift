@@ -18,17 +18,19 @@ struct ContentView: View {
     var body: some View {
         Group {
             if startupSessionCheckComplete {
-                Authenticator {
+                Authenticator(totpOptions: .init(issuer: "BulBul SEQS")) {
                     state in
-                    MainView(
-                        onSignOut: {
-                            Task { @MainActor in
-                                _ = await state.signOut()
-                                deleteLocalUserData()
+                    MandatoryMFAGate {
+                        MainView(
+                            onSignOut: {
+                                Task { @MainActor in
+                                    _ = await state.signOut()
+                                    deleteLocalUserData()
+                                }
                             }
-                        }
-                    )
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        )
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    }
                 }
             } else {
                 ProgressView()

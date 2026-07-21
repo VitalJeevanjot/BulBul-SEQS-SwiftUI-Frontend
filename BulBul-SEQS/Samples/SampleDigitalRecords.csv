@@ -1,0 +1,101 @@
+Index,Date,Sample bank description,Amount,Transaction type,Possible HMRC category,Confidence in classification,Disallowable Amount
+1,2025-04-06,"Stripe payout - customer invoices batch 001",3119.34,income,otherExpenses,0.56,0.00
+2,2025-04-09,"Refund - Trade association subscription",284.83,expenseRefund,otherExpenses,0.88,0.00
+3,2025-04-12,"Transfer to business reserve account 003",1994.11,transfer,otherExpenses,0.61,0.00
+4,2025-04-15,"Personal drawings - owner transfer 004",-144.37,personal,otherExpensesDisallowable,0.96,144.37
+5,2025-04-18,"Customer refund - credit note 005",-102.35,incomeRefund,otherExpenses,0.59,0.00
+6,2025-04-21,"Tool repair and servicing",-36.85,expense,maintenanceCosts,0.96,0.00
+7,2025-04-24,"Cloud software and stationery",-609.35,expense,adminCosts,0.90,97.10
+8,2025-04-27,"Stripe payout - customer invoices batch 008",2251.44,income,otherExpenses,0.64,0.00
+9,2025-04-30,"Meta Ads campaign",-612.23,expense,advertisingCosts,0.93,84.30
+10,2025-05-03,"Business loan interest",-560.02,expense,interestOnBankOtherLoans,0.79,0.00
+11,2025-05-06,"Bank card processing charges",-345.42,expense,financeCharges,0.92,0.00
+12,2025-05-09,"Customer invoice written off",-212.44,expense,irrecoverableDebts,0.86,12.08
+13,2025-05-12,"Harper & Co accountancy",-925.50,expense,professionalFees,0.91,0.00
+14,2025-05-15,"Monthly equipment depreciation",-770.67,expense,depreciation,0.75,0.00
+15,2025-05-18,"Stripe payout - customer invoices batch 015",870.42,income,otherExpenses,0.61,0.00
+16,2025-05-21,"Refund - Client dinner at The Ivy",336.81,expenseRefund,businessEntertainmentCosts,0.78,0.00
+17,2025-05-24,"Transfer to business reserve account 017",941.91,transfer,otherExpenses,0.50,0.00
+18,2025-05-27,"Personal drawings - owner transfer 018",-497.88,personal,otherExpensesDisallowable,0.95,497.88
+19,2025-05-30,"Customer refund - credit note 019",-334.06,incomeRefund,otherExpenses,0.65,0.00
+20,2025-06-02,"Private-use element - Studio rent and utilities",-995.61,expense,premisesRunningCostsDisallowable,0.77,188.91
+21,2025-06-05,"Private-use element - Tool repair and servicing",-70.92,expense,maintenanceCostsDisallowable,0.93,19.74
+22,2025-06-08,"Stripe payout - customer invoices batch 022",3146.08,income,otherExpenses,0.56,0.00
+23,2025-06-11,"Private-use element - Client dinner at The Ivy",-505.91,expense,businessEntertainmentCostsDisallowable,0.89,131.73
+24,2025-06-14,"Private-use element - Meta Ads campaign",-473.26,expense,advertisingCostsDisallowable,0.85,193.53
+25,2025-06-17,"Private-use element - Business loan interest",-255.78,expense,interestOnBankOtherLoansDisallowable,0.84,40.79
+26,2025-06-20,"Private-use element - Bank card processing charges",-337.77,expense,financeChargesDisallowable,0.81,73.94
+27,2025-06-23,"Private-use element - Customer invoice written off",-286.04,expense,irrecoverableDebtsDisallowable,0.93,65.82
+28,2025-06-26,"Private-use element - Harper & Co accountancy",-37.56,expense,professionalFeesDisallowable,0.96,15.11
+29,2025-06-29,"Stripe payout - customer invoices batch 029",958.57,income,otherExpenses,0.63,0.00
+30,2025-07-02,"Refund - Booker Wholesale - resale inventory",217.47,expenseRefund,costOfGoods,0.90,0.00
+31,2025-07-05,"Transfer to business reserve account 031",1683.31,transfer,otherExpenses,0.57,0.00
+32,2025-07-08,"Personal drawings - owner transfer 032",-116.61,personal,otherExpensesDisallowable,0.96,116.61
+33,2025-07-11,"Customer refund - credit note 033",-313.49,incomeRefund,otherExpenses,0.63,0.00
+34,2025-07-14,"Shell fuel and motorway tolls",-122.77,expense,carVanTravelExpenses,0.90,0.00
+35,2025-07-17,"Studio rent and utilities",-776.22,expense,premisesRunningCosts,0.76,0.00
+36,2025-07-20,"Stripe payout - customer invoices batch 036",1399.19,income,otherExpenses,0.54,0.00
+37,2025-07-23,"Cloud software and stationery",-855.62,expense,adminCosts,0.75,0.00
+38,2025-07-26,"Client dinner at The Ivy",-988.16,expense,businessEntertainmentCosts,0.85,0.00
+39,2025-07-29,"Meta Ads campaign",-600.35,expense,advertisingCosts,0.87,0.00
+40,2025-08-01,"Business loan interest",-914.87,expense,interestOnBankOtherLoans,0.81,0.00
+41,2025-08-04,"Bank card processing charges",-291.77,expense,financeCharges,0.88,0.00
+42,2025-08-07,"Customer invoice written off",-56.91,expense,irrecoverableDebts,0.82,0.00
+43,2025-08-10,"Stripe payout - customer invoices batch 043",2910.84,income,otherExpenses,0.64,0.00
+44,2025-08-13,"Refund - Meta Ads campaign",340.32,expenseRefund,advertisingCosts,0.93,0.00
+45,2025-08-16,"Transfer to business reserve account 045",1243.28,transfer,otherExpenses,0.56,0.00
+46,2025-08-19,"Personal drawings - owner transfer 046",-79.18,personal,otherExpensesDisallowable,0.95,79.18
+47,2025-08-22,"Customer refund - credit note 047",-37.48,incomeRefund,otherExpenses,0.68,0.00
+48,2025-08-25,"Private-use element - Monthly staff payroll",-352.41,expense,wagesAndStaffCostsDisallowable,0.89,187.49
+49,2025-08-28,"Private-use element - Shell fuel and motorway tolls",-434.75,expense,carVanTravelExpensesDisallowable,0.92,171.38
+50,2025-08-31,"Stripe payout - customer invoices batch 050",3138.45,income,otherExpenses,0.61,0.00
+51,2025-09-03,"Private-use element - Tool repair and servicing",-827.26,expense,maintenanceCostsDisallowable,0.97,167.73
+52,2025-09-06,"Private-use element - Cloud software and stationery",-369.60,expense,adminCostsDisallowable,0.84,173.92
+53,2025-09-09,"Private-use element - Client dinner at The Ivy",-887.24,expense,businessEntertainmentCostsDisallowable,0.94,399.11
+54,2025-09-12,"Private-use element - Meta Ads campaign",-470.68,expense,advertisingCostsDisallowable,0.85,275.67
+55,2025-09-15,"Private-use element - Business loan interest",-608.61,expense,interestOnBankOtherLoansDisallowable,0.81,301.17
+56,2025-09-18,"Private-use element - Bank card processing charges",-890.78,expense,financeChargesDisallowable,0.79,255.56
+57,2025-09-21,"Stripe payout - customer invoices batch 057",824.98,income,otherExpenses,0.54,0.00
+58,2025-09-24,"Refund - Northside Electrical - subcontractor invoice",275.65,expenseRefund,paymentsToSubcontractors,0.92,0.00
+59,2025-09-27,"Transfer to business reserve account 059",1132.71,transfer,otherExpenses,0.56,0.00
+60,2025-09-30,"Personal drawings - owner transfer 060",-182.41,personal,otherExpensesDisallowable,0.97,182.41
+61,2025-10-03,"Customer refund - credit note 061",-286.94,incomeRefund,otherExpenses,0.67,0.00
+62,2025-10-06,"Northside Electrical - subcontractor invoice",-126.88,expense,paymentsToSubcontractors,0.85,0.00
+63,2025-10-09,"Monthly staff payroll",-49.62,expense,wagesAndStaffCosts,0.87,0.00
+64,2025-10-12,"Stripe payout - customer invoices batch 064",3099.24,income,otherExpenses,0.55,0.00
+65,2025-10-15,"Studio rent and utilities",-131.37,expense,premisesRunningCosts,0.93,24.14
+66,2025-10-18,"Tool repair and servicing",-972.90,expense,maintenanceCosts,0.98,0.00
+67,2025-10-21,"Cloud software and stationery",-144.45,expense,adminCosts,0.83,0.00
+68,2025-10-24,"Client dinner at The Ivy",-351.44,expense,businessEntertainmentCosts,0.94,0.00
+69,2025-10-27,"Meta Ads campaign",-909.89,expense,advertisingCosts,0.95,0.00
+70,2025-10-30,"Business loan interest",-383.26,expense,interestOnBankOtherLoans,0.77,0.00
+71,2025-11-02,"Stripe payout - customer invoices batch 071",1349.74,income,otherExpenses,0.55,0.00
+72,2025-11-05,"Refund - Business loan interest",135.43,expenseRefund,interestOnBankOtherLoans,0.96,0.00
+73,2025-11-08,"Transfer to business reserve account 073",1810.77,transfer,otherExpenses,0.55,0.00
+74,2025-11-11,"Personal drawings - owner transfer 074",-402.22,personal,otherExpensesDisallowable,0.95,402.22
+75,2025-11-14,"Customer refund - credit note 075",-287.78,incomeRefund,otherExpenses,0.73,0.00
+76,2025-11-17,"Private-use element - Booker Wholesale - resale inventory",-986.47,expense,costOfGoodsDisallowable,0.93,403.35
+77,2025-11-20,"Private-use element - Northside Electrical - subcontractor invoice",-398.47,expense,paymentsToSubcontractorsDisallowable,0.95,187.48
+78,2025-11-23,"Stripe payout - customer invoices batch 078",1655.78,income,otherExpenses,0.57,0.00
+79,2025-11-26,"Private-use element - Shell fuel and motorway tolls",-467.67,expense,carVanTravelExpensesDisallowable,0.94,222.99
+80,2025-11-29,"Private-use element - Studio rent and utilities",-115.03,expense,premisesRunningCostsDisallowable,0.87,63.39
+81,2025-12-02,"Private-use element - Tool repair and servicing",-384.89,expense,maintenanceCostsDisallowable,0.95,156.00
+82,2025-12-05,"Private-use element - Cloud software and stationery",-629.45,expense,adminCostsDisallowable,0.91,98.06
+83,2025-12-08,"Private-use element - Client dinner at The Ivy",-573.09,expense,businessEntertainmentCostsDisallowable,0.86,207.05
+84,2025-12-11,"Private-use element - Meta Ads campaign",-649.51,expense,advertisingCostsDisallowable,0.80,349.92
+85,2025-12-14,"Stripe payout - customer invoices batch 085",3792.94,income,otherExpenses,0.60,0.00
+86,2025-12-17,"Refund - Monthly staff payroll",128.99,expenseRefund,wagesAndStaffCosts,0.96,0.00
+87,2025-12-20,"Transfer to business reserve account 087",770.62,transfer,otherExpenses,0.55,0.00
+88,2025-12-23,"Personal drawings - owner transfer 088",-245.60,personal,otherExpensesDisallowable,0.99,245.60
+89,2025-12-26,"Customer refund - credit note 089",-111.06,incomeRefund,otherExpenses,0.61,0.00
+90,2025-12-29,"Private-use element - Trade association subscription",-68.14,expense,otherExpensesDisallowable,0.75,37.62
+91,2026-01-01,"Booker Wholesale - resale inventory",-265.44,expense,costOfGoods,0.88,34.17
+92,2026-01-04,"Stripe payout - customer invoices batch 092",3111.31,income,otherExpenses,0.54,0.00
+93,2026-01-07,"Monthly staff payroll",-34.95,expense,wagesAndStaffCosts,0.74,0.00
+94,2026-01-10,"Shell fuel and motorway tolls",-193.01,expense,carVanTravelExpenses,0.85,0.00
+95,2026-01-13,"Studio rent and utilities",-859.96,expense,premisesRunningCosts,0.83,0.00
+96,2026-01-16,"Tool repair and servicing",-196.58,expense,maintenanceCosts,0.83,0.00
+97,2026-01-19,"Cloud software and stationery",-182.58,expense,adminCosts,0.84,23.99
+98,2026-01-22,"Client dinner at The Ivy",-420.92,expense,businessEntertainmentCosts,0.93,22.31
+99,2026-01-25,"Stripe payout - customer invoices batch 099",1486.22,income,otherExpenses,0.52,0.00
+100,2026-01-28,"Refund - Bank card processing charges",133.33,expenseRefund,financeCharges,0.87,0.00

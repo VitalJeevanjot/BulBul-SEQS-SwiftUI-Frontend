@@ -128,28 +128,20 @@ final class HMRCJourneyViewModel {
             let validSummaries = validatedUniqueSummaries(summaries)
             print("[HMRC] Extracted business IDs: \(validSummaries.map(\.businessId))")
 
-            try loadStoredBusinesses(modelContext: modelContext)
-            var storedByID = Dictionary(uniqueKeysWithValues: businesses.map { ($0.businessID, $0) })
+            businesses = []
+            try LocalUserDataStore.deleteAllBusinesses(from: modelContext)
+            var storedByID: [String: StoredBusiness] = [:]
 
             for summary in validSummaries {
-                if let stored = storedByID[summary.businessId] {
-                    stored.update(summary: summary)
-                } else {
-                    let stored = StoredBusiness(userID: profile.userID, nino: nino, summary: summary)
-                    modelContext.insert(stored)
-                    storedByID[summary.businessId] = stored
-                }
+                let stored = StoredBusiness(userID: profile.userID, nino: nino, summary: summary)
+                modelContext.insert(stored)
+                storedByID[summary.businessId] = stored
             }
 
             try modelContext.save()
 
             for (index, summary) in validSummaries.enumerated() {
                 guard let stored = storedByID[summary.businessId] else { continue }
-                guard !stored.hasDetails else {
-                    print("[HMRC] Cache hit for business \(summary.businessId); details request skipped.")
-                    continue
-                }
-
                 progressMessage = "Loading business \(index + 1) of \(validSummaries.count)…"
                 await retrieveAndStoreDetails(
                     nino: nino,
@@ -157,6 +149,9 @@ final class HMRCJourneyViewModel {
                     stored: stored,
                     modelContext: modelContext
                 )
+
+                progressMessage = "Loading obligations for business \(index + 1) of \(validSummaries.count)…"
+                await retrieveAndStoreObligations(stored: stored, modelContext: modelContext)
             }
 
             try loadStoredBusinesses(modelContext: modelContext)
@@ -187,6 +182,26 @@ final class HMRCJourneyViewModel {
 
         progressMessage = nil
         isLoading = false
+    }
+
+    func createTestBusiness(
+        _ payload: HMRCCreateTestBusinessPayload,
+        modelContext: ModelContext
+    ) async throws -> String {
+        guard testing else { throw JourneyError.testModeRequired }
+        guard isNINOValid else { throw JourneyError.invalidNINO }
+
+        let result = try await api.createTestBusiness(nino: ninoInput, business: payload)
+        guard result.success else {
+            if let error = result.error { throw error }
+            throw JourneyError.emptyAPIResponse("The backend returned neither a test business nor an error.")
+        }
+        guard let businessID = result.data?.businessId else {
+            throw JourneyError.emptyAPIResponse("The backend did not return the new test business ID.")
+        }
+        await getBusinesses(modelContext: modelContext)
+        successMessage = "Business \(businessID) created successfully."
+        return businessID
     }
 
     private func validatedUniqueSummaries(
@@ -262,6 +277,33 @@ final class HMRCJourneyViewModel {
         }
     }
 
+    private func retrieveAndStoreObligations(
+        stored: StoredBusiness,
+        modelContext: ModelContext
+    ) async {
+        do {
+            try await BusinessObligationStore.refresh(
+                business: stored,
+                modelContext: modelContext,
+                api: api
+            )
+        } catch let apiError as HMRCAPIError {
+            issues.append(
+                HMRCJourneyIssue(
+                    title: "Could not load obligations for \(stored.businessID)",
+                    apiError: apiError
+                )
+            )
+        } catch {
+            issues.append(
+                HMRCJourneyIssue(
+                    title: "Could not load obligations for \(stored.businessID)",
+                    message: error.localizedDescription
+                )
+            )
+        }
+    }
+
     private func loadStoredBusinesses(modelContext: ModelContext) throws {
         guard let profile else {
             businesses = []
@@ -287,6 +329,8 @@ final class HMRCJourneyViewModel {
 private enum JourneyError: LocalizedError {
     case emptyAPIResponse(String)
     case invalidBusinessID(String)
+    case invalidNINO
+    case testModeRequired
 
     var errorDescription: String? {
         switch self {
@@ -294,6 +338,10 @@ private enum JourneyError: LocalizedError {
             return message
         case .invalidBusinessID(let businessID):
             return "HMRC returned invalid business ID \(businessID)."
+        case .invalidNINO:
+            return "Enter a valid NINO before creating a test business."
+        case .testModeRequired:
+            return "Test businesses can only be created while testing is enabled."
         }
     }
 }

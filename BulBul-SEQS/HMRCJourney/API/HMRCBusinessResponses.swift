@@ -120,6 +120,84 @@ struct HMRCRetrieveBusinessDetailsResult: Codable, Sendable {
     let error: HMRCAPIError?
 }
 
+struct HMRCCreateTestBusinessResponse: Codable, Hashable, Sendable {
+    let businessId: String
+}
+
+struct HMRCCreateTestBusinessResult: Codable, Sendable {
+    let success: Bool
+    let data: HMRCCreateTestBusinessResponse?
+    let error: HMRCAPIError?
+}
+
+struct HMRCCreateTestBusinessPayload: Hashable, Sendable {
+    var typeOfBusiness: String = "self-employment"
+    var tradingName: String?
+    var firstAccountingPeriodStartDate: String?
+    var firstAccountingPeriodEndDate: String?
+    var accountingType: String?
+    var commencementDate: String?
+    var cessationDate: String?
+    var businessAddressLineOne: String?
+    var businessAddressLineTwo: String?
+    var businessAddressLineThree: String?
+    var businessAddressLineFour: String?
+    var businessAddressPostcode: String?
+    var businessAddressCountryCode: String?
+    var quarterlyPeriodType: String?
+    var taxYearOfChoice: String?
+    var latencyEndDate: String?
+    var latencyTaxYear1: String?
+    var latencyIndicator1: String?
+    var latencyTaxYear2: String?
+    var latencyIndicator2: String?
+
+    var graphQLInput: [String: Any] {
+        var input: [String: Any] = ["typeOfBusiness": typeOfBusiness]
+        input.addNonEmpty(tradingName, for: "tradingName")
+        input.addNonEmpty(firstAccountingPeriodStartDate, for: "firstAccountingPeriodStartDate")
+        input.addNonEmpty(firstAccountingPeriodEndDate, for: "firstAccountingPeriodEndDate")
+        input.addNonEmpty(accountingType, for: "accountingType")
+        input.addNonEmpty(commencementDate, for: "commencementDate")
+        input.addNonEmpty(cessationDate, for: "cessationDate")
+        input.addNonEmpty(businessAddressLineOne, for: "businessAddressLineOne")
+        input.addNonEmpty(businessAddressLineTwo, for: "businessAddressLineTwo")
+        input.addNonEmpty(businessAddressLineThree, for: "businessAddressLineThree")
+        input.addNonEmpty(businessAddressLineFour, for: "businessAddressLineFour")
+        input.addNonEmpty(businessAddressPostcode, for: "businessAddressPostcode")
+        input.addNonEmpty(businessAddressCountryCode, for: "businessAddressCountryCode")
+        if let quarterlyPeriodType, !quarterlyPeriodType.isEmpty,
+           let taxYearOfChoice, !taxYearOfChoice.isEmpty {
+            input["quarterlyTypeChoice"] = [
+                "quarterlyPeriodType": quarterlyPeriodType,
+                "taxYearOfChoice": taxYearOfChoice,
+            ]
+        }
+        if let latencyEndDate, !latencyEndDate.isEmpty,
+           let latencyTaxYear1, !latencyTaxYear1.isEmpty,
+           let latencyIndicator1, !latencyIndicator1.isEmpty,
+           let latencyTaxYear2, !latencyTaxYear2.isEmpty,
+           let latencyIndicator2, !latencyIndicator2.isEmpty {
+            input["latencyDetails"] = [
+                "latencyEndDate": latencyEndDate,
+                "taxYear1": latencyTaxYear1,
+                "latencyIndicator1": latencyIndicator1,
+                "taxYear2": latencyTaxYear2,
+                "latencyIndicator2": latencyIndicator2,
+            ]
+        }
+        return input
+    }
+}
+
+private extension Dictionary where Key == String, Value == Any {
+    mutating func addNonEmpty(_ value: String?, for key: String) {
+        if let value, !value.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            self[key] = value
+        }
+    }
+}
+
 struct HMRCJourneyIssue: Identifiable, Hashable, Sendable {
     let id = UUID()
     let title: String

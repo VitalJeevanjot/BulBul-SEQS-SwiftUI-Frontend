@@ -29,7 +29,13 @@ final class StoredBusiness {
     var lastErrorMessage: String?
     var lastErrorStatusCode: Int?
     var lastErrorCorrelationID: String?
+    var importedCSVRelativePath: String?
+    var obligationsFetchedAt: Date?
     var updatedAt: Date = Date()
+    @Relationship(deleteRule: .cascade, inverse: \DigitalRecord.business)
+    var digitalRecords: [DigitalRecord] = []
+    @Relationship(deleteRule: .cascade, inverse: \StoredObligation.business)
+    var obligations: [StoredObligation] = []
 
     init(userID: String, nino: String, summary: HMRCBusinessSummary) {
         self.userID = userID

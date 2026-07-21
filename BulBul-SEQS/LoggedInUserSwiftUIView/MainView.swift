@@ -18,6 +18,8 @@ struct MainView: View {
     @State var isShowingHMRCSignInSuccess = false
     @State var hmrcConnectionState = HMRCConnectionState.checking
     @State var isAuthenticatingWithHMRC = false
+    @State private var isShowingMFASettings = false
+    @State private var isShowingCreateTestBusiness = false
     @Namespace private var businessZoomNamespace
 
     var onSignOut: () -> Void = {}
@@ -28,8 +30,16 @@ struct MainView: View {
                 LazyVStack(spacing: 16) {
                     UserHeaderView(
                         displayName: viewModel.userDisplayName,
+                        showMFASettings: { isShowingMFASettings = true },
                         signOut: onSignOut
                     )
+
+                    if let successMessage = viewModel.successMessage {
+                        Label(successMessage, systemImage: "checkmark.circle.fill")
+                            .font(.subheadline)
+                            .foregroundStyle(.green)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                    }
 
                     HMRCConnectionView(
                         state: hmrcConnectionState,
@@ -60,13 +70,6 @@ struct MainView: View {
                             .accessibilityIdentifier("business-loading-status")
                         }
 
-                        if let successMessage = viewModel.successMessage {
-                            Label(successMessage, systemImage: "checkmark.circle.fill")
-                                .font(.subheadline)
-                                .foregroundStyle(.green)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                        }
-
                         ForEach(viewModel.issues) { issue in
                             HMRCIssueCard(issue: issue)
                         }
@@ -76,6 +79,15 @@ struct MainView: View {
                                 businesses: viewModel.businesses,
                                 namespace: businessZoomNamespace
                             )
+                        }
+
+                        if testing, viewModel.isNINOValid {
+                            Button("Create test business", systemImage: "building.2.crop.circle.fill") {
+                                isShowingCreateTestBusiness = true
+                            }
+                            .buttonStyle(.borderedProminent)
+                            .frame(maxWidth: .infinity, alignment: .trailing)
+                            .accessibilityIdentifier("create-test-business-button")
                         }
                     }
                 }
@@ -105,6 +117,14 @@ struct MainView: View {
             Button("OK", role: .cancel) {}
         } message: {
             Text("You’re now signed in with HMRC.")
+        }
+        .sheet(isPresented: $isShowingMFASettings) {
+            MFASettingsView(isMandatory: false)
+        }
+        .sheet(isPresented: $isShowingCreateTestBusiness) {
+            CreateTestBusinessView { payload in
+                try await viewModel.createTestBusiness(payload, modelContext: modelContext)
+            }
         }
     }
 
@@ -139,5 +159,8 @@ struct MainView: View {
 
 #Preview {
     MainView()
-        .modelContainer(for: [HMRCUserProfile.self, StoredBusiness.self], inMemory: true)
+        .modelContainer(
+            for: [HMRCUserProfile.self, StoredBusiness.self, DigitalRecord.self, StoredObligation.self],
+            inMemory: true
+        )
 }
