@@ -4,7 +4,7 @@
 
 BulBul SEQS runs on iOS and macOS. It combines Amazon Cognito authentication, AWS AppSync through Amplify, HMRC OAuth, SwiftData persistence, digital-record import and export, obligation tracking, and cumulative-summary preparation in one native app.
 
-> This repository contains the Apple-platform frontend. The AppSync and HMRC integration backend is configured through the tracked Amplify outputs, but its source code is not part of this repository.
+> This repository contains the Apple-platform frontend. The AppSync and HMRC integration backend it talks to is in [BulBul-SEQS-Amplify-Backend](https://github.com/VitalJeevanjot/BulBul-SEQS-Amplify-Backend); this app reads its endpoints from the tracked Amplify outputs.
 
 ## Features
 
